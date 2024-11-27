@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+    vector<string> res;//check above and ans;
+    int closed=n;
+    int open=0;
+    backtrack("",res,0,0,n);
+    return res;
+    }
+    void backtrack(string curr, vector<string>& res, int closed,int open, int n)
+    {
+       if(curr.length()==2*n)  
+       {res.push_back(curr);
+       return;}
+       if(open<n) backtrack(curr+'(',res,closed,open+1,n);
+       if(closed<open) backtrack(curr+')',res,closed+1,open,n);
+    }
+
+};
